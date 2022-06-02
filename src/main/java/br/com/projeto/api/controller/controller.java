@@ -20,6 +20,16 @@ public class controller {
     @Autowired
     private UserService service;
 
+    @GetMapping("/dashboard")
+	public String dashboard() {
+		return "Displaying the dashboard page contents";
+	}
+	
+	@GetMapping("/home")
+	public String home() {
+		return "Displaying the home page contents";
+	}
+
     @PostMapping("/user")
     public ResponseEntity<?> user(@Valid @RequestBody User user){
         return service.createUser(user);
@@ -29,11 +39,6 @@ public class controller {
     @GetMapping("/users")
     public ResponseEntity<?> select(){
         return service.findUsers();
-    }
-
-    @GetMapping("/")
-    public String home(){
-        return "home";
     }
 
     @PostMapping("/user/existis")
